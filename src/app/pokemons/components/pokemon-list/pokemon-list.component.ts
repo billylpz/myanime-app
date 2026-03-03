@@ -1,11 +1,9 @@
-import { Component, computed, effect, inject, OnInit, signal } from '@angular/core';
+import { Component, computed,  inject, signal } from '@angular/core';
 import { PokemonCardComponent } from "../pokemon-card/pokemon-card.component";
 import { PokemonService } from '../../services/pokemon.service';
 import { rxResource } from '@angular/core/rxjs-interop';
-import { PokemonResponse, PokemonResult } from '../../interfaces/pokemon-response.interface';
 import { PaginatorComponent } from "../../../shared/components/paginator/paginator.component";
 import { PaginatorService } from '../../../shared/components/paginator/paginator.service';
-import { filter, map, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { LoadingSpinnerComponent } from "../../../shared/components/loading-spinner/loading-spinner.component";
 
@@ -27,7 +25,7 @@ export class PokemonListComponent {
   search = signal('');
 
   onSearch(term: string) {
-    this.search.set(term.toLowerCase());
+    this.search.set(term.toLowerCase().trim());
     this.router.navigate([])
   }
 
@@ -38,11 +36,9 @@ export class PokemonListComponent {
       search: this.search()
     }),
     stream: ({ params }) => {
-
+      
       // Caso A: si search no está vacío → búsqueda local
-      if (params.search.trim().length > 0) {
-        console.log("entro a search");
-
+      if (params.search.length > 0) {
         return this.service.searchPokemonsByName({
           offset: params.page * this.limit(),
           paramsPage: params.page,

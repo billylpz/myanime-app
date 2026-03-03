@@ -12,24 +12,24 @@ import { RouterOutlet } from "@angular/router";
   imports: [ RouterOutlet]
 })
 export class DbzHomePageComponent {
-  service = inject(DbzService);
-  paginationService = inject(PaginatorService)
+  // service = inject(DbzService);
+  // paginationService = inject(PaginatorService)
 
 
-  dbzResource = rxResource({
-    params: () => ({ page: this.paginationService.currentPage()  }),
-    stream: ({ params }) => {
-      return this.service.getCharacters({ page: params.page }).pipe(delay(300),)
-    }
-  });
+  // dbzResource = rxResource({
+  //   params: () => ({ page: this.paginationService.currentPage()  }),
+  //   stream: ({ params }) => {
+  //     return this.service.getCharacters({ page: params.page }).pipe(delay(300),)
+  //   }
+  // });
 
-  characters = computed(() => {
-    return this.dbzResource.value()?.items;
-  });
+  // characters = computed(() => {
+  //   return this.dbzResource.value()?.items;
+  // });
 
-  totalPages = computed(() => {
-    return this.dbzResource.value()?.meta.totalPages!;
-  });
+  // totalPages = computed(() => {
+  //   return this.dbzResource.value()?.meta.totalPages!;
+  // });
 
 
 }

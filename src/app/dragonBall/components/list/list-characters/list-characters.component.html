@@ -1,18 +1,16 @@
-
 <div class="flex flex-col min-h-screen">
-  
-  <app-tittle [title]="title"/>
 
-  <app-menuButtons/>
+  <app-tittle [title]="title" />
+
+  <app-menuButtons />
 
 
   <app-paginator [currentPage]="paginationService.currentPage()" [totalPages]="totalPages()" />
 
   @if (dbzResource.isLoading()){
   <app-loading-spinner />
-  }
-
-
+  } @else{
+    
   <!-- TABLA -->
   <div class="grid grid-cols-1 gap-5  
      sm:grid-cols-2
@@ -23,6 +21,6 @@
     }
   </div>
   <br><br>
-
+  }
 </div>
 <app-paginator [currentPage]="paginationService.currentPage()" [totalPages]="totalPages()" />

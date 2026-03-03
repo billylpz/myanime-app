@@ -14,9 +14,12 @@ export class CharacterCardComponent {
   openModal = signal(false);
 
   characterProperties = computed(() => {
+    const excluded = ['image', 'deletedAt', 'id'];
+
     return Object.entries(this.character())
       .map(([key, value]) => { return { key, value } })
-      .filter((value) => value.key != 'image' && value.key != 'deletedAt' && value.key != 'id');
+      ///.filter((value) => value.key != 'image' && value.key != 'deletedAt' && value.key != 'id'); forma 1
+      .filter(({ key }) => !excluded.includes(key))
   });
 
   image = computed(() => {

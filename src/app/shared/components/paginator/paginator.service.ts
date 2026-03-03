@@ -15,7 +15,7 @@ export class PaginatorService {
 
   currentPage = toSignal(
     this.route.queryParamMap.pipe(
-      map((params) => params.get("page") ? +params.get("page")! : 1),
+      map((params) => params.get("page") ? parseInt(params.get("page")!) : 1),
       map((page) => isNaN(page) ? 1 : page),
       map((page) => page==0 ? 1:page),
     ),

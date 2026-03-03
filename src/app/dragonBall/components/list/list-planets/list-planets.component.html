@@ -7,13 +7,13 @@
 
   @if (planetsResource.isLoading()){
   <app-loading-spinner />
-  }
-
+  }@else {
+    
   <div class="flex-1">
     @for (planet of planetsResource.value()?.items; track planet) {
     <app-planet-card [planet]="planet"></app-planet-card>
     }
   </div>
-
+  }
 </div>
 <app-paginator [currentPage]="paginationService.currentPage()" [totalPages]="totalPages()"></app-paginator>

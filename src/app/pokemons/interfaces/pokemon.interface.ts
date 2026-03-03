@@ -30,7 +30,7 @@ export interface Cries {
 // --- Moves ---
 export interface Move {
   move: MoveInfo;
-  version_group_details: any[]; // si quieres, puedo tiparlo
+  version_group_details: any[]; 
 }
 
 export interface MoveInfo {

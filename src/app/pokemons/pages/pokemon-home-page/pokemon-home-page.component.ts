@@ -8,11 +8,7 @@ import { RouterModule, RouterOutlet } from '@angular/router';
   styleUrls: ['./pokemon-home-page.component.css'],
     imports: [RouterModule]
 })
-export default class PokemonHomePageComponent implements OnInit {
+export default class PokemonHomePageComponent  {
 
-  constructor() { }
-
-  ngOnInit() {
-  }
 
 }

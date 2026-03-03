@@ -27,13 +27,13 @@ export class PlanetModalComponent {
     return this.planetResource.value()?.characters!;
   });
 
-  characterProperties(character: Character) {
-    return Object.entries(character)
-      .map(([key, value]) => { return { key, value } })
-      .filter(( value ) => value.key != 'id'  
-        && value.key!='image'
-      )
-  }
+  // characterProperties(character: Character) {
+  //   return Object.entries(character)
+  //     .map(([key, value]) => { return { key, value } })
+  //     .filter(( value ) => value.key != 'id'  
+  //       && value.key!='image'
+  //     )
+  // }
 
   openModal(): void {
     this.modal()?.nativeElement.showModal();

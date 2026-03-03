@@ -15,6 +15,11 @@ export class CharacterModalComponent {
   service = inject(DbzService)
   close = output<boolean>();
 
+
+  effects = effect(() => {
+    this.openModal();
+  });
+
   characterResource = rxResource({
     params: () => ({ id: this.characterId() }),
     stream: ({ params }) => {
@@ -35,12 +40,6 @@ export class CharacterModalComponent {
 
   transformationsArray = computed(() => {
     return this.characterResource.value()?.transformations;
-  });
-
-  effects = effect(() => {
-    this.openModal();
-    this.service.getCharacter(this.characterId()).subscribe(res => console.log(res)
-    );
   });
 
   openModal() {
