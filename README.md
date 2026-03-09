@@ -42,6 +42,7 @@ Aplicación web desarrollada con Angular 20 que consume y gestiona múltiples AP
 - Visualización de tipos
 - Reproducción de sonidos (Pokémon Cry)
 - Navegación entre APIs
+- Modo Claro/Oscuro
 
 ---
 ### ⚠️ Prerrequisitos 
@@ -55,16 +56,6 @@ Ejecutar en la terminal lo siguiente en la ruta donde hayas descargado el proyec
 ```bash
 npm install 
 ng serve
-```
-
-Abrir en:
-http://localhost:4200
-
-
----
-## 📦 Generar build para producción
-```bash
-ng build --configuration production
 ```
 
 ---
