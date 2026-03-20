@@ -1,4 +1,4 @@
-# My Anime Api
+# My Anime App
 
 Aplicación web desarrollada con Angular que consume múltiples APIs públicas 
 (Pokémon y Dragon Ball) mostrando datos con paginación, búsqueda y reproducción de audio.
