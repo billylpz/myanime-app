@@ -1,5 +1,5 @@
-<div class="join flex justify-center mb-10 ">
-  <button class="join-item btn bg-gray-400 dark:bg-slate-800" [routerLink]="[]" [queryParams]="{page:1}">First</button>
+<div class="join flex justify-center mb-10   [&_button]:text-gray-700 dark:[&_button]:text-gray-200 dark:[&_button]:border-slate-700">
+  <button class="join-item btn bg-gray-400 dark:bg-slate-800 "  [routerLink]="[]" [queryParams]="{page:1}">First</button>
   <button class="join-item btn bg-gray-500 dark:bg-slate-800/50 " [routerLink]="[]" [queryParams]="{page:currentPage()-1}"
      [disabled]="currentPage()==1">«</button>
   <button class="join-item btn bg-gray-400 dark:bg-slate-800">Page {{currentPage()}} of {{totalPages()}} </button>
