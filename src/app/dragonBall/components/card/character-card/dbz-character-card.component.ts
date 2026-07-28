@@ -1,15 +1,15 @@
 import { TitleCasePipe } from '@angular/common';
 import { Character } from '../../../interfaces/character-interface';
 import { Component, computed, input, signal } from '@angular/core';
-import { CharacterModalComponent } from '../../modal/character-modal/character-modal.component';
+import { DbzCharacterModalComponent } from '../../modal/character-modal/dbz-character-modal.component';
 
 @Component({
-  selector: 'app-character-card',
-  templateUrl: './character-card.component.html',
-  styleUrls: ['./character-card.component.css'],
-  imports: [TitleCasePipe, CharacterModalComponent]
+  selector: 'dbz-character-card',
+  templateUrl: './dbz-character-card.component.html',
+  styleUrls: ['./dbz-character-card.component.css'],
+  imports: [TitleCasePipe, DbzCharacterModalComponent]
 })
-export class CharacterCardComponent {
+export class DbzCharacterCardComponent {
   character = input.required<Character>();
   openModal = signal(false);
 

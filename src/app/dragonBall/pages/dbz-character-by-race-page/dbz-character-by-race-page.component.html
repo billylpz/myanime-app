@@ -1,7 +1,7 @@
 <div class="flex flex-col min-h-screen">
   <app-tittle [title]="title" />
 
-  <app-menuButtons />
+  <dbz-menuButtons />
 
   <div class="flex justify-center text-black">
     <select class="select select-secondary w-40 sm:w-50 bg-gray-200 dark:bg-slate-800 dark:text-white"
@@ -14,14 +14,14 @@
   </div>
 
   @if (dbzResource.isLoading()){
-  <app-loading-spinner />
+  <loading-spinner />
   }
 
 
   <div class="grid grid-cols-1 gap-5 flex-1
     sm:grid-cols-2">
     @for (character of characters(); track character.id) {
-    <app-character-card [character]="character" />
+    <dbz-character-card [character]="character" />
     }
   </div>
 

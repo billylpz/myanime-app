@@ -1,7 +1,7 @@
 
 <app-tittle [title]="title"/>
 <div class="min-h-screen flex flex-col flex-1 ">
-  <app-paginator [currentPage]="paginatorService.currentPage()" [totalPages]="totalPages()"></app-paginator>
+  <paginator [currentPage]="paginatorService.currentPage()" [totalPages]="totalPages()"></paginator>
 
   <!-- input busqueda -->
   <div class="w-50 sm:w-100 md:w-100 lg:w-full lg:flex lg:justify-center lg:mt-15 ">
@@ -20,7 +20,7 @@
 
 
   @if (pokemonResource.isLoading()) {
-  <app-loading-spinner />
+  <loading-spinner />
   }
 
   @else if (pokemonResource.value()?.results?.length!>0) {
@@ -28,11 +28,11 @@
   <div class="grid grid-cols-2 gap-4 mt-15 mb-15 
     sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
     @for (pokemon of pokemonResource.value()?.results; track pokemon.name) {
-    <app-pokemon-card [inputName]="pokemon.name" />
+    <pokemon-card [inputName]="pokemon.name" />
     }
   </div>
 
-  <app-paginator [currentPage]="paginatorService.currentPage()" [totalPages]="totalPages()"></app-paginator>
+  <paginator [currentPage]="paginatorService.currentPage()" [totalPages]="totalPages()"></paginator>
 
   }@else {
   <div class="mt-10 flex justify-center">

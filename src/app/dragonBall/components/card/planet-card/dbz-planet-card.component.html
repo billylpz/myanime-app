@@ -14,7 +14,7 @@
       <button class="btn btn-primary" (click)="openModal.set(true)">Characters</button>
 
       @if(openModal()){
-      <app-planet-modal (close)="openModal.set($event)" [planetId]="planet().id"></app-planet-modal>
+      <dbz-planet-modal (close)="openModal.set($event)" [planetId]="planet().id"></dbz-planet-modal>
       }
     </div>
   </div>

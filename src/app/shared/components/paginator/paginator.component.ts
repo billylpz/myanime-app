@@ -1,8 +1,8 @@
-import { Component, inject, input, OnInit, signal } from '@angular/core';
-import { Router, RouterLink } from "@angular/router";
+import { Component, input } from '@angular/core';
+import { RouterLink } from "@angular/router";
 
 @Component({
-  selector: 'app-paginator',
+  selector: 'paginator',
   templateUrl: './paginator.component.html',
   styleUrls: ['./paginator.component.css'],
   imports: [RouterLink]

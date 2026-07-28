@@ -2,15 +2,15 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { DbzService } from '../../services/dbz.service';
 import { LoadingSpinnerComponent } from "../../../shared/components/loading-spinner/loading-spinner.component";
-import { CharacterCardComponent } from "../../components/card/character-card/character-card.component";
-import { MenuButtonsComponent } from "../../components/menu-buttons/menuButtons/menuButtons.component";
+import { DbzCharacterCardComponent } from "../../components/card/character-card/dbz-character-card.component";
+import { DbzMenuButtonsComponent } from "../../components/menu-buttons/menuButtons/dbz-menuButtons.component";
 import { TittleComponent } from "../../../shared/components/tittle/tittle.component";
 
 @Component({
   selector: 'app-dbz-character-by-page',
   templateUrl: './dbz-character-by-race-page.component.html',
   styleUrls: ['./dbz-character-by-race-page.component.css'],
-  imports: [LoadingSpinnerComponent, CharacterCardComponent, MenuButtonsComponent, TittleComponent]
+  imports: [LoadingSpinnerComponent, DbzCharacterCardComponent, DbzMenuButtonsComponent, TittleComponent]
 })
 export class DbzCharacterByRacePageComponent{
 

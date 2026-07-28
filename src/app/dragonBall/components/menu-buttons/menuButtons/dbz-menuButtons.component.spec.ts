@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { MenuButtonsComponent } from './menuButtons.component';
+import { DbzMenuButtonsComponent } from './dbz-menuButtons.component';
 
 describe('MenuButtonsComponent', () => {
-  let component: MenuButtonsComponent;
-  let fixture: ComponentFixture<MenuButtonsComponent>;
+  let component: DbzMenuButtonsComponent;
+  let fixture: ComponentFixture<DbzMenuButtonsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MenuButtonsComponent ]
+      declarations: [ DbzMenuButtonsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MenuButtonsComponent);
+    fixture = TestBed.createComponent(DbzMenuButtonsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

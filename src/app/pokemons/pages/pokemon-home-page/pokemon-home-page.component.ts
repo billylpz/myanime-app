@@ -1,7 +1,7 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { Router, RouterModule } from '@angular/router';
-import { PaginatorService } from '../../../shared/components/paginator/paginator.service';
+import { PaginatorService } from '../../../shared/components/paginator/service/paginator.service';
 import { PokemonService } from '../../services/pokemon.service';
 import { LoadingSpinnerComponent } from "../../../shared/components/loading-spinner/loading-spinner.component";
 import { PokemonCardComponent } from "../../components/pokemon-card/pokemon-card.component";

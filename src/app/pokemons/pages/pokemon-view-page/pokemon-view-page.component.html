@@ -1,9 +1,9 @@
-<app-tittle [title]="title"/>
+<app-tittle [title]="title" />
 <div class="flex justify-center">
   <div class="card  w-96 shadow-xl  text-black dark:text-white
     bg-gray-200  dark:bg-linear-to-b from-slate-900 to-slate-700  shadow-slate-500 dark:shadow-slate-800
   ">
-   
+
     <div class="card-body">
       <h1 class="card-title text-3xl mb-5">
         {{pokemonResource.value() | pokemonName | titlecase}}
@@ -33,4 +33,4 @@
   </div>
 </div>
 
-<app-images-carousel [images]="pokemonImages()"/>
+<images-carousel [images]="pokemonImages()" />

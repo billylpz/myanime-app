@@ -1,14 +1,13 @@
-import { Component, computed, effect, ElementRef, inject, input, OnInit, output, viewChild } from '@angular/core';
+import { Component, computed, effect, ElementRef, inject, input, output, viewChild } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { DbzService } from '../../../services/dbz.service';
-import { Character } from '../../../interfaces/character-interface';
 
 @Component({
-  selector: 'app-planet-modal',
-  templateUrl: './planet-modal.component.html',
-  styleUrls: ['./planet-modal.component.css']
+  selector: 'dbz-planet-modal',
+  templateUrl: './dbz-planet-modal.component.html',
+  styleUrls: ['./dbz-planet-modal.component.css']
 })
-export class PlanetModalComponent {
+export class DbzPlanetModalComponent {
   modal = viewChild<ElementRef<HTMLDialogElement>>('modal')
   close = output<boolean>();
   planetId = input.required<number>()

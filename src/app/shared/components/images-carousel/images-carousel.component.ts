@@ -10,7 +10,7 @@ export interface Image {
 
 
 @Component({
-  selector: 'app-images-carousel',
+  selector: 'images-carousel',
   templateUrl: './images-carousel.component.html',
   styleUrls: ['./images-carousel.component.css'],
   imports:[TitleCasePipe],

@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { PlanetCardComponent } from './planet-card.component';
+import { DbzPlanetCardComponent } from './dbz-planet-card.component';
 
 describe('PlanetCardComponent', () => {
-  let component: PlanetCardComponent;
-  let fixture: ComponentFixture<PlanetCardComponent>;
+  let component: DbzPlanetCardComponent;
+  let fixture: ComponentFixture<DbzPlanetCardComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PlanetCardComponent ]
+      declarations: [ DbzPlanetCardComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PlanetCardComponent);
+    fixture = TestBed.createComponent(DbzPlanetCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,15 +1,15 @@
-import { Component, computed, effect, ElementRef, inject, input, OnInit, output, viewChild } from '@angular/core';
+import { Component, computed, effect, ElementRef, inject, input, output, viewChild } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { TitleCasePipe } from '@angular/common';
 import { DbzService } from '../../../services/dbz.service';
 
 @Component({
-  selector: 'app-character-modal',
-  templateUrl: './character-modal.component.html',
-  styleUrls: ['./character-modal.component.css'],
+  selector: 'dbz-character-modal',
+  templateUrl: './dbz-character-modal.component.html',
+  styleUrls: ['./dbz-character-modal.component.css'],
   imports: [TitleCasePipe]
 })
-export class CharacterModalComponent {
+export class DbzCharacterModalComponent {
   modal = viewChild<ElementRef<HTMLDialogElement>>('modal');
   characterId = input.required<number>();
   service = inject(DbzService)

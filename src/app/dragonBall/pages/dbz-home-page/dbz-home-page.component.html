@@ -2,13 +2,13 @@
 
   <app-tittle [title]="title" />
 
-  <app-menuButtons />
+  <dbz-menuButtons />
 
 
-  <app-paginator [currentPage]="paginationService.currentPage()" [totalPages]="totalPages()" />
+  <paginator [currentPage]="paginationService.currentPage()" [totalPages]="totalPages()" />
 
   @if (dbzResource.isLoading()){
-  <app-loading-spinner />
+  <loading-spinner />
   } @else{
     
   <!-- TABLA -->
@@ -17,10 +17,10 @@
      md:grid-cols-2
      lg:grid-cols-2">
     @for (character of characters(); track character.id) {
-    <app-character-card [character]="character" />
+    <dbz-character-card [character]="character" />
     }
   </div>
   <br><br>
   }
 </div>
-<app-paginator [currentPage]="paginationService.currentPage()" [totalPages]="totalPages()" />
+<paginator [currentPage]="paginationService.currentPage()" [totalPages]="totalPages()" />

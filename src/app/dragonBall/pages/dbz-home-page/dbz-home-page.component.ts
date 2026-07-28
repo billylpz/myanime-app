@@ -1,18 +1,18 @@
 import { Component, computed, inject } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
-import { PaginatorService } from '../../../shared/components/paginator/paginator.service';
+import { PaginatorService } from '../../../shared/components/paginator/service/paginator.service';
 import { DbzService } from '../../services/dbz.service';
 import { PaginatorComponent } from "../../../shared/components/paginator/paginator.component";
-import { CharacterCardComponent } from "../../components/card/character-card/character-card.component";
 import { LoadingSpinnerComponent } from "../../../shared/components/loading-spinner/loading-spinner.component";
-import { MenuButtonsComponent } from "../../components/menu-buttons/menuButtons/menuButtons.component";
+import { DbzMenuButtonsComponent } from "../../components/menu-buttons/menuButtons/dbz-menuButtons.component";
 import { TittleComponent } from "../../../shared/components/tittle/tittle.component";
+import { DbzCharacterCardComponent } from '../../components/card/character-card/dbz-character-card.component';
 
 @Component({
   selector: 'app-dbz-home-page',
   templateUrl: './dbz-home-page.component.html',
   styleUrls: ['./dbz-home-page.component.css'],
-  imports: [PaginatorComponent, CharacterCardComponent, LoadingSpinnerComponent, MenuButtonsComponent, TittleComponent]
+  imports: [PaginatorComponent, DbzCharacterCardComponent, LoadingSpinnerComponent, DbzMenuButtonsComponent, TittleComponent]
 })
 export class DbzHomePageComponent {
   

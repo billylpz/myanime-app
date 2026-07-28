@@ -11,8 +11,8 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Image, ImagesCarouselComponent } from "../../../shared/components/images-carousel/images-carousel.component";
 import { TittleComponent } from "../../../shared/components/tittle/tittle.component";
-import { PokemonNamePipe } from '../../pipes/pokemon-name.pipe';
-import { PokemonTypeColorPipe } from '../../pipes/pokemon-type-color.pipe';
+import { PokemonNamePipe } from '../../pipes/pokemon-name/pokemon-name.pipe';
+import { PokemonTypeColorPipe } from '../../pipes/pokemon-type/pokemon-type-color.pipe';
 
 @Component({
   selector: 'app-pokemon-view-page',

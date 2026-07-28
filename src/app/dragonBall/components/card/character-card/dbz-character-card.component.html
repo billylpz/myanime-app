@@ -29,7 +29,7 @@
         Details
       </button>
       @if (openModal()) {
-      <app-character-modal [characterId]="character().id" (close)="openModal.set($event)" />
+      <dbz-character-modal [characterId]="character().id" (close)="openModal.set($event)" />
       }
     </div>
   </div>
