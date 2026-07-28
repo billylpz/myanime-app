@@ -10,31 +10,23 @@ export const homeRoutes: Routes = [
       {
         path: 'home',
         component: HomePageComponent,
-        children: [
-          {
-            path: 'pokemon',
-            loadChildren: () => import("../pokemons/pokemon.routes"),
-            title: 'Pokémon API'
-          },
-          {
-            path: 'dbz',
-            loadChildren: () => import("../dragonBall/dragon-ball.routes"),
-            title: 'DBZ API'
-          },
-          {
-            path: '**',
-            redirectTo: 'pokemon'
-          }
-        ]
+        title: 'Bienvenido a MyAnime APP'
       },
-
+      {
+        path: 'pokemon',
+        loadChildren: () => import("../pokemons/pokemon.routes"),
+        title: 'Pokémon API'
+      },
+      {
+        path: 'dbz',
+        loadChildren: () => import("../dragonBall/dragon-ball.routes"),
+        title: 'DBZ API'
+      },
       {
         path: "**",
-        redirectTo: 'home/pokemon'
+        redirectTo: '/home'
       }
-
     ]
-
   },
 ];
 

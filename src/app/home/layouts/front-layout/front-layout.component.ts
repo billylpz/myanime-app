@@ -9,11 +9,7 @@ import { RouterOutlet } from '@angular/router';
   styleUrls: ['./front-layout.component.css'],
   imports: [NavbarComponent, FooterComponent, RouterOutlet]
 })
-export class FrontLayoutComponent implements OnInit {
+export class FrontLayoutComponent {
 
-  constructor() { }
-
-  ngOnInit() {
-  }
 
 }

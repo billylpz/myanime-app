@@ -1,30 +1,32 @@
-import {  Component, computed, effect, inject, OnInit, Signal } from '@angular/core';
+import { Component, computed, effect, inject, OnInit, Signal } from '@angular/core';
 import { PokemonService } from '../../services/pokemon.service';
 import { ActivatedRoute } from '@angular/router';
 import { rxResource, toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs';
-import { CommonModule} from '@angular/common';
+import { CommonModule, TitleCasePipe } from '@angular/common';
 
 // import Swiper and modules styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { Image} from "../../../shared/components/images-carousel/images-carousel.component";
-import { PokemonViewCardComponent } from "../../components/pokemon-view-card/pokemon-view-card.component";
+import { Image, ImagesCarouselComponent } from "../../../shared/components/images-carousel/images-carousel.component";
 import { TittleComponent } from "../../../shared/components/tittle/tittle.component";
+import { PokemonNamePipe } from '../../pipes/pokemon-name.pipe';
+import { PokemonTypeColorPipe } from '../../pipes/pokemon-type-color.pipe';
 
 @Component({
   selector: 'app-pokemon-view-page',
   templateUrl: './pokemon-view-page.component.html',
   styleUrls: ['./pokemon-view-page.component.css'],
-  imports: [ CommonModule,  PokemonViewCardComponent, TittleComponent]
+  imports: [ImagesCarouselComponent, PokemonNamePipe, PokemonTypeColorPipe, TitleCasePipe,
+    CommonModule, TittleComponent]
 })
 export class PokemonViewPageComponent {
   private service = inject(PokemonService);
   private activatedRoute = inject(ActivatedRoute);
-  private audio=new Audio();
+  private audio = new Audio();
 
-  title:string='Pokémon Info';
+  title: string = 'Pokémon Info';
 
   pokemonName = toSignal(
     this.activatedRoute.paramMap.pipe(
@@ -40,16 +42,16 @@ export class PokemonViewPageComponent {
   })
 
   effects = effect(() => {
-      
-    }
+
+  }
   );
 
   playCry(url: string | undefined) {
-    if(url){
+    if (url) {
       this.audio.pause()
-      this.audio.src=url;
-      this.audio.currentTime=0;
-      this.audio.play().catch(()=>{console.log("No se pudo reproducir el audio");})
+      this.audio.src = url;
+      this.audio.currentTime = 0;
+      this.audio.play().catch(() => { console.log("No se pudo reproducir el audio"); })
     }
   }
 

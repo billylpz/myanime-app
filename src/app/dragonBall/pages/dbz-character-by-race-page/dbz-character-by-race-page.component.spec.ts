@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { PokemonListComponent } from './pokemon-list.component';
+import { DbzCharacterByRacePageComponent } from './dbz-character-by-race-page.component';
 
-describe('PokemonListComponent', () => {
-  let component: PokemonListComponent;
-  let fixture: ComponentFixture<PokemonListComponent>;
+describe('DbzCharacterByPageComponent', () => {
+  let component: DbzCharacterByRacePageComponent;
+  let fixture: ComponentFixture<DbzCharacterByRacePageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PokemonListComponent ]
+      declarations: [ DbzCharacterByRacePageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PokemonListComponent);
+    fixture = TestBed.createComponent(DbzCharacterByRacePageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

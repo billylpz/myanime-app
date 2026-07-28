@@ -1,25 +1,13 @@
 import { Routes } from '@angular/router';
 import { DbzHomePageComponent } from './pages/dbz-home-page/dbz-home-page.component';
-import { ListPlanetsComponent } from './components/list/list-planets/list-planets.component';
-import { ListCharactersComponent } from './components/list/list-characters/list-characters.component';
-import { ListCaractersByComponent } from './components/list/list-caracters-by/list-caracters-by.component';
+import { DbzCharacterByRacePageComponent } from './pages/dbz-character-by-race-page/dbz-character-by-race-page.component';
+import { DbzPlanetsPageComponent } from './pages/dbz-planets-page/dbz-planets-page.component';
 
 const DragonBallRoutes: Routes = [
-  {
-    path: '',
-    children: [
-      {
-        path: 'home', component: DbzHomePageComponent,
-        children: [
-          { path: 'characters', component: ListCharactersComponent },
-          { path: 'characters-by', component: ListCaractersByComponent },
-          { path: 'planets', component: ListPlanetsComponent },
-          { path: '**', redirectTo: 'characters' },
-        ]
-      },
-      { path: '**', redirectTo: 'home' }
-    ]
-  }
+  {path: '', component: DbzHomePageComponent },
+  { path: 'characters-by-race', component: DbzCharacterByRacePageComponent },
+  { path: 'planets', component: DbzPlanetsPageComponent },
+  { path: '**', redirectTo: 'characters' },
 ];
 
 export default DragonBallRoutes;

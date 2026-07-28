@@ -24,7 +24,7 @@
     shadow-xl shadow-slate-500 dark:shadow-slate-800 mb-15 cursor-pointer 
     sm:w-50 h-95">
 
-    <section [routerLink]="['../view', pokemonResource.value()?.name]" class="flex-1">
+    <section [routerLink]="['view', pokemonResource.value()?.name]" class="flex-1">
       <figure class="flex justify-center">
         @if (pokemonResource.value()?.sprites?.front_default) {
           <img [src]="pokemonResource.value()?.sprites?.front_default" [alt]="pokemonResource.value()?.name" class="size-30" />

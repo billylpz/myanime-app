@@ -1,2 +1,36 @@
 <app-tittle [title]="title"/>
-<app-pokemon-view-card/>
+<div class="flex justify-center">
+  <div class="card  w-96 shadow-xl  text-black dark:text-white
+    bg-gray-200  dark:bg-linear-to-b from-slate-900 to-slate-700  shadow-slate-500 dark:shadow-slate-800
+  ">
+   
+    <div class="card-body">
+      <h1 class="card-title text-3xl mb-5">
+        {{pokemonResource.value() | pokemonName | titlecase}}
+      </h1>
+      @for (type of pokemonResource.value()?.types; track $index) {
+      <div class="card-actions ">
+        <div class="badge" [ngClass]="type.type.name | pokemonTypeColor">{{type.type.name}}</div>
+      </div>
+      }
+      <!-- <p>A card component has a figure, a body part, and inside body there are title and actions parts</p> -->
+      <div class="card-actions justify-end flex items-center">
+        <span class="text-lg">Weight:</span>
+        <div class="badge badge-outline bg-gray-400 text-black">
+          {{pokemonResource.value()?.weight!/10}} Kg
+        </div>
+      </div>
+
+      @if(pokemonResource.value()?.cries?.latest){
+      <button (click)="playCry(pokemonResource.value()?.cries?.latest)" class="flex items-center gap-2 px-4 py-2 rounded-xl
+         bg-indigo-600 text-white font-semibold
+         hover:bg-indigo-700 active:scale-95
+         transition-all shadow-md cursor-pointer">
+        🔊 Play Cry
+      </button>
+      }
+    </div>
+  </div>
+</div>
+
+<app-images-carousel [images]="pokemonImages()"/>

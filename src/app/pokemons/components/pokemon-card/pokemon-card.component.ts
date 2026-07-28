@@ -1,8 +1,6 @@
-import { Component, ElementRef, inject, input, OnInit, signal, ViewChild } from '@angular/core';
-import { Pokemon } from '../../interfaces/pokemon.interface';
+import { Component, inject, input} from '@angular/core';
 import { PokemonService } from '../../services/pokemon.service';
 import { rxResource } from '@angular/core/rxjs-interop';
-import { Observable } from 'rxjs';
 import { CommonModule, TitleCasePipe } from '@angular/common';
 import { PokemonNamePipe } from "../../pipes/pokemon-name.pipe";
 import { PokemonTypeColorPipe } from "../../pipes/pokemon-type-color.pipe";
