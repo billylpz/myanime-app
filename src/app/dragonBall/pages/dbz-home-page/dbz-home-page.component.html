@@ -1,16 +1,14 @@
 <div class="flex flex-col min-h-screen">
 
   <app-tittle [title]="title" />
-
   <dbz-menuButtons />
-
-
-  <paginator [currentPage]="paginationService.currentPage()" [totalPages]="totalPages()" />
 
   @if (dbzResource.isLoading()){
   <loading-spinner />
-  } @else{
-    
+  }
+  @else{
+  <paginator [currentPage]="paginationService.currentPage()" [totalPages]="totalPages()" />
+
   <!-- TABLA -->
   <div class="grid grid-cols-1 gap-5  
      sm:grid-cols-2
@@ -20,7 +18,8 @@
     <dbz-character-card [character]="character" />
     }
   </div>
-  <br><br>
+
+  <paginator [currentPage]="paginationService.currentPage()" [totalPages]="totalPages()" />
+
   }
 </div>
-<paginator [currentPage]="paginationService.currentPage()" [totalPages]="totalPages()" />

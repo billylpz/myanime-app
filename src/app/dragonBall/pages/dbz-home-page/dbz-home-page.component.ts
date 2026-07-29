@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, effect, inject } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { PaginatorService } from '../../../shared/components/paginator/service/paginator.service';
 import { DbzService } from '../../services/dbz.service';
@@ -15,7 +15,6 @@ import { DbzCharacterCardComponent } from '../../components/card/character-card/
   imports: [PaginatorComponent, DbzCharacterCardComponent, LoadingSpinnerComponent, DbzMenuButtonsComponent, TittleComponent]
 })
 export class DbzHomePageComponent {
-  
   service = inject(DbzService);
   paginationService = inject(PaginatorService)
   title = 'Dragon Ball Characters'
@@ -33,6 +32,10 @@ export class DbzHomePageComponent {
 
   totalPages = computed(() => {
     return this.dbzResource.value()?.meta.totalPages!;
+  });
+
+  currentPageGreaterThanResourcePagesEffect = effect(() => {
+    this.paginationService.resetCurrentPageIfGreaterThanResourcePages(this.dbzResource.value()?.meta.totalPages);
   });
 
 }

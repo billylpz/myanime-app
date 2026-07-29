@@ -1,19 +1,18 @@
 <div class="flex flex-col min-h-screen">
   <app-tittle [title]="title" />
-
   <dbz-menuButtons />
-  <paginator [currentPage]="paginationService.currentPage()" [totalPages]="totalPages()"></paginator>
-
 
   @if (planetsResource.isLoading()){
   <loading-spinner />
   }@else {
-    
+  <paginator [currentPage]="paginationService.currentPage()" [totalPages]="totalPages()"></paginator>
+
   <div class="flex-1">
     @for (planet of planetsResource.value()?.items; track planet) {
     <dbz-planet-card [planet]="planet"></dbz-planet-card>
     }
   </div>
+
+  <paginator [currentPage]="paginationService.currentPage()" [totalPages]="totalPages()"></paginator>
   }
 </div>
-<paginator [currentPage]="paginationService.currentPage()" [totalPages]="totalPages()"></paginator>

@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, effect, inject, signal } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { Router, RouterModule } from '@angular/router';
 import { PaginatorService } from '../../../shared/components/paginator/service/paginator.service';
@@ -54,6 +54,10 @@ export default class PokemonHomePageComponent {
         offset: params.page * this.limit()
       })
     }
+  });
+
+  currentPageGreaterThanResourcePagesEffect = effect(() => {
+    this.paginatorService.resetCurrentPageIfGreaterThanResourcePages(this.totalPages());
   });
 
 }

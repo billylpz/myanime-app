@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnInit } from '@angular/core';
+import { Component, computed, effect, inject} from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { PaginatorService } from '../../../shared/components/paginator/service/paginator.service';
 import { DbzService } from '../../services/dbz.service';
@@ -15,7 +15,6 @@ import { DbzPlanetCardComponent } from "../../components/card/planet-card/dbz-pl
   imports: [TittleComponent, DbzMenuButtonsComponent, PaginatorComponent, LoadingSpinnerComponent, DbzPlanetCardComponent]
 })
 export class DbzPlanetsPageComponent  {
-
   service = inject(DbzService);
   paginationService = inject(PaginatorService);
   title='List of Planets';
@@ -31,6 +30,10 @@ export class DbzPlanetsPageComponent  {
   totalPages = computed(() => {
     const totalPages = this.planetsResource.value()?.meta.totalPages!
     return totalPages
+  });
+
+  currentPageGreaterThanResourcePagesEffect = effect(() => {
+    this.paginationService.resetCurrentPageIfGreaterThanResourcePages(this.planetsResource.value()?.meta.totalPages);
   });
 
 }
