@@ -14,8 +14,9 @@
         </g>
       </svg>
       <input type="search" class="focus:outline-none bg-gray-200 dark:bg-slate-800" placeholder="Buscar por nombre..."
-        (input)="onSearch(searchInput.value)" #searchInput [disabled]="pokemonResource.isLoading()">
+        [formControl]="searchByNameControl">
     </label>
+
   </div>
 
   <!-- 1. SKELETON LOADER -->
@@ -34,7 +35,7 @@
 
   <!-- 2. RESULTADOS REALES -->
   @else if ((pokemonResource.value()?.results?.length ?? 0) > 0) {
-  <paginator [currentPage]="paginatorService.currentPage()" [totalPages]="totalPages()"/>
+  <paginator [currentPage]="paginatorService.currentPage()" [totalPages]="totalPages()" />
 
   <!-- 🔹 LISTA REAL -->
   <div class="grid grid-cols-2 gap-4 my-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
@@ -43,14 +44,18 @@
     }
   </div>
 
-  <paginator [currentPage]="paginatorService.currentPage()" [totalPages]="totalPages()"/>
+  <paginator [currentPage]="paginatorService.currentPage()" [totalPages]="totalPages()" />
 
   }
 
   <!-- 3. SIN RESULTADOS -->
   @else {
   <div class="mt-10 flex justify-center">
-    <p class="text-gray-500 dark:text-gray-400">No se encontraron datos con la búsqueda '{{search()}}'</p>
+    <p class="text-gray-500 dark:text-gray-400">No se encontraron datos con la búsqueda
+      @if(searchByName()){
+        '{{searchByName()}}'
+      }
+    </p>
   </div>
   }
 </div>

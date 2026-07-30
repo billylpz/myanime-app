@@ -1,5 +1,5 @@
-import { Component, computed, effect, inject, signal } from '@angular/core';
-import { rxResource } from '@angular/core/rxjs-interop';
+import { Component, computed, DestroyRef, effect, inject, OnInit, signal } from '@angular/core';
+import { rxResource, takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Router, RouterModule } from '@angular/router';
 import { PaginatorService } from '../../../shared/service/paginator/paginator.service';
 import { PokemonService } from '../../services/pokemon.service';
@@ -8,16 +8,20 @@ import { PaginatorComponent } from "../../../shared/components/paginator/paginat
 import { TittleComponent } from "../../../shared/components/tittle/tittle.component";
 import { PokemonCardSkeletonComponent } from "../../components/pokemon-card-skeleton/pokemon-card-skeleton.component";
 import { PaginatorSkeletonComponent } from "../../../shared/components/paginator-skeleton/paginator-skeleton.component";
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { debounceTime, distinctUntilChanged } from 'rxjs';
 
 @Component({
   selector: 'app-pokemon-home-page',
   templateUrl: './pokemon-home-page.component.html',
   styleUrls: ['./pokemon-home-page.component.css'],
-  imports: [RouterModule, PokemonCardComponent, PaginatorComponent, TittleComponent, PokemonCardSkeletonComponent, PaginatorSkeletonComponent]
+  imports: [RouterModule, PokemonCardComponent, PaginatorComponent, TittleComponent, PokemonCardSkeletonComponent, PaginatorSkeletonComponent,
+    ReactiveFormsModule
+  ]
 })
-export default class PokemonHomePageComponent {
+export default class PokemonHomePageComponent implements OnInit {
   readonly title = 'List of Pokémons';
-
+  private destroyRef= inject(DestroyRef);
   private service = inject(PokemonService)
   paginatorService = inject(PaginatorService);
   router = inject(Router);
@@ -26,27 +30,34 @@ export default class PokemonHomePageComponent {
   apiCount = computed(() => this.pokemonResource.value()?.count ?? 0);
   totalPages = computed(() => Math.ceil(this.apiCount() / this.limit()))
 
-  search = signal('');
+  searchByName = signal('');
+  searchByNameControl = new FormControl<string>('');
 
-  onSearch(term: string) {
-    this.search.set(term.toLowerCase().trim());
-    this.router.navigate([])
+  ngOnInit(): void {
+    this.searchByNameControl.valueChanges.pipe(
+      debounceTime(1000),
+      distinctUntilChanged(),
+      takeUntilDestroyed(this.destroyRef)
+    )
+    .subscribe(value => {
+      this.searchByName.set(value?.toLowerCase().trim() ?? '');
+      this.router.navigate([])
+    })
   }
-
 
   pokemonResource = rxResource({
     params: () => ({
       page: this.paginatorService.currentPage() - 1,
-      search: this.search()
+      searchByName: this.searchByName()
     }),
     stream: ({ params }) => {
 
       // Caso A: si search no está vacío → búsqueda local
-      if (params.search.length > 0) {
+      if (params.searchByName.length > 0) {
         return this.service.searchPokemonsByName({
           offset: params.page * this.limit(),
           paramsPage: params.page,
-          term: params.search
+          term: params.searchByName
         })
       }
 
