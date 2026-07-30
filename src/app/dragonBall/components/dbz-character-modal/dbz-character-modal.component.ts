@@ -1,7 +1,8 @@
 import { Component, computed, effect, ElementRef, inject, input, output, viewChild } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { TitleCasePipe } from '@angular/common';
-import { DbzService } from '../../../services/dbz.service';
+import { DbzService } from '../../services/dbz.service';
+import { delay } from 'rxjs';
 
 @Component({
   selector: 'dbz-character-modal',

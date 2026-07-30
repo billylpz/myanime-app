@@ -5,11 +5,9 @@
     <img [src]="image()" class="w-full h-full" />
   </figure>
 
-
-
   <div class="card-body w-full flex flex-col ">
     <div class="flex-1 overflow-auto">
-      <h2 class="card-title text-4xl">{{character().name}}</h2>
+      <h2 class="card-title text-4xl text-gray-900 dark:text-white">{{character().name}}</h2>
 
       <!-- imagen en movil/md -->
       <div class="  flex justify-center xl:hidden">
@@ -19,11 +17,12 @@
 
       <div class=" mt-5">
         @for (propertie of characterProperties() ; track propertie) {
-        <p><span class=" dark:text-amber-200 font-bold"> {{propertie.key | titlecase}}</span> : {{propertie.value}}</p>
+        <p><span class="text-gray-800 dark:text-amber-200 font-bold"> {{propertie.key | titlecase}}</span> : {{propertie.value}}</p>
         <br>
         }
       </div>
     </div>
+    
     <div class="card-actions justify-end mt-5">
       <button class="btn btn-primary " (click)="openModal.set(true)">
         Details

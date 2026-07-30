@@ -1,36 +1,64 @@
 <app-tittle [title]="title" />
-<div class="flex justify-center">
-  <div class="card  w-96 shadow-xl  text-black dark:text-white
-    bg-gray-200  dark:bg-linear-to-b from-slate-900 to-slate-700  shadow-slate-500 dark:shadow-slate-800
-  ">
 
-    <div class="card-body">
-      <h1 class="card-title text-3xl mb-5">
-        {{pokemonResource.value() | pokemonName | titlecase}}
-      </h1>
-      @for (type of pokemonResource.value()?.types; track $index) {
-      <div class="card-actions ">
-        <div class="badge" [ngClass]="type.type.name | pokemonTypeColor">{{type.type.name}}</div>
+<!-- 1. MIENTRAS CARGA LA PETICIÓN -->
+@if (pokemonResource.isLoading()) {
+  <div class="flex justify-center my-4">
+    <!-- Skeleton View-Card -->
+    <div class="card w-96 shadow-xl bg-gray-200 dark:bg-slate-800 p-6 animate-pulse space-y-4">
+      <div class="h-8 bg-slate-300 dark:bg-slate-700 rounded w-3/4"></div>
+      <div class="flex gap-2">
+        <div class="h-6 bg-slate-300 dark:bg-slate-700 rounded-full w-16"></div>
       </div>
-      }
-      <!-- <p>A card component has a figure, a body part, and inside body there are title and actions parts</p> -->
-      <div class="card-actions justify-end flex items-center">
-        <span class="text-lg">Weight:</span>
-        <div class="badge badge-outline bg-gray-400 text-black">
-          {{pokemonResource.value()?.weight!/10}} Kg
-        </div>
+      <div class="flex justify-between items-center pt-4">
+        <div class="h-5 bg-slate-300 dark:bg-slate-700 rounded w-16"></div>
+        <div class="h-6 bg-slate-300 dark:bg-slate-700 rounded w-16"></div>
       </div>
-
-      @if(pokemonResource.value()?.cries?.latest){
-      <button (click)="playCry(pokemonResource.value()?.cries?.latest)" class="flex items-center gap-2 px-4 py-2 rounded-xl
-         bg-indigo-600 text-white font-semibold
-         hover:bg-indigo-700 active:scale-95
-         transition-all shadow-md cursor-pointer">
-        🔊 Play Cry
-      </button>
-      }
+      <div class="h-10 bg-slate-300 dark:bg-slate-700 rounded-xl w-full mt-4"></div>
     </div>
   </div>
-</div>
 
-<images-carousel [images]="pokemonImages()" />
+  <!-- Skeleton para el Carousel -->
+  <div class="flex justify-center gap-4 my-8 animate-pulse">
+    <div class="w-24 h-24 bg-slate-300 dark:bg-slate-800 rounded-xl"></div>
+    <div class="w-24 h-24 bg-slate-300 dark:bg-slate-800 rounded-xl"></div>
+    <div class="w-24 h-24 bg-slate-300 dark:bg-slate-800 rounded-xl"></div>
+  </div>
+}
+
+<!-- 2. CUANDO LA PETICIÓN CONCLUYE CON ÉXITO -->
+@if (pokemonResource.value()) {
+  <div class="flex justify-center ">
+    <!-- View-Card -->
+    <div class="card w-96 shadow-xl text-black dark:text-white 
+      bg-gray-200 dark:bg-linear-to-b from-slate-900 to-slate-700 shadow-slate-500 dark:shadow-slate-800">
+
+      <div class="card-body">
+        <h1 class="card-title text-3xl mb-5">
+          {{pokemonResource.value() | pokemonName | titlecase}}
+        </h1>
+        @for (type of pokemonResource.value()?.types; track $index) {
+        <div class="card-actions ">
+          <div class="badge" [ngClass]="type.type.name | pokemonTypeColor">{{type.type.name}}</div>
+        </div>
+        }
+        <div class="card-actions justify-end flex items-center">
+          <span class="text-lg">Weight:</span>
+          <div class="badge badge-outline bg-gray-400 text-black">
+            {{pokemonResource.value()?.weight!/10}} Kg
+          </div>
+        </div>
+
+        @if(pokemonResource.value()?.cries?.latest){
+        <button (click)="playCry(pokemonResource.value()?.cries?.latest)" class="flex items-center gap-2 px-4 py-2 rounded-xl
+           bg-indigo-600 text-white font-semibold
+           hover:bg-indigo-700 active:scale-95
+           transition-all shadow-md cursor-pointer">
+          🔊 Play Cry
+        </button>
+        }
+      </div>
+    </div>
+  </div>
+
+  <images-carousel [images]="pokemonImages()" />
+}

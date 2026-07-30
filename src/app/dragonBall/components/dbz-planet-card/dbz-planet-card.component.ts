@@ -1,7 +1,7 @@
 import { Component, input, signal } from '@angular/core';
 import { TitleCasePipe } from '@angular/common';
-import { Planet } from '../../../interfaces/planet-interface';
-import { DbzPlanetModalComponent } from '../../modal/planet-modal/dbz-planet-modal.component';
+import { Planet } from '../../interfaces/planet-interface';
+import { DbzPlanetModalComponent } from '../dbz-planet-modal/dbz-planet-modal.component';
 
 @Component({
   selector: 'dbz-planet-card',

@@ -1,15 +1,27 @@
 <div class="flex flex-col min-h-screen">
-
   <app-tittle [title]="title" />
   <dbz-menuButtons />
 
   @if (dbzResource.isLoading()){
-  <loading-spinner />
+  <paginator-skeleton/>
+  
+  <!-- LISTADO SKELETON-->
+  <div class="grid grid-cols-1 gap-5  
+     sm:grid-cols-2
+     md:grid-cols-2
+     lg:grid-cols-2">
+
+    @for (item of [1,2,3,4,5,6,7,8,9,10,11,12]; track $index) {
+      <dbz-character-card-skeleton/>
+    }
+  </div>
+
+  <paginator-skeleton/>
   }
   @else{
   <paginator [currentPage]="paginationService.currentPage()" [totalPages]="totalPages()" />
 
-  <!-- TABLA -->
+  <!-- LISTADO -->
   <div class="grid grid-cols-1 gap-5  
      sm:grid-cols-2
      md:grid-cols-2

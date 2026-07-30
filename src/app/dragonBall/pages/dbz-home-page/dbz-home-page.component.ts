@@ -1,18 +1,19 @@
 import { Component, computed, effect, inject } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
-import { PaginatorService } from '../../../shared/components/paginator/service/paginator.service';
+import { PaginatorService } from '../../../shared/service/paginator/paginator.service';
 import { DbzService } from '../../services/dbz.service';
 import { PaginatorComponent } from "../../../shared/components/paginator/paginator.component";
-import { LoadingSpinnerComponent } from "../../../shared/components/loading-spinner/loading-spinner.component";
-import { DbzMenuButtonsComponent } from "../../components/menu-buttons/menuButtons/dbz-menuButtons.component";
 import { TittleComponent } from "../../../shared/components/tittle/tittle.component";
-import { DbzCharacterCardComponent } from '../../components/card/character-card/dbz-character-card.component';
+import { DbzCharacterCardComponent } from '../../components/dbz-character-card/dbz-character-card.component';
+import { PaginatorSkeletonComponent } from "../../../shared/components/paginator-skeleton/paginator-skeleton.component";
+import { DbzMenuButtonsComponent } from '../../components/dbz-menu-buttons/dbz-menuButtons.component';
+import { DbzCharacterCardSkeletonComponent } from '../../components/dbz-character-card-skeleton/dbz-character-card-skeleton.component';
 
 @Component({
   selector: 'app-dbz-home-page',
   templateUrl: './dbz-home-page.component.html',
   styleUrls: ['./dbz-home-page.component.css'],
-  imports: [PaginatorComponent, DbzCharacterCardComponent, LoadingSpinnerComponent, DbzMenuButtonsComponent, TittleComponent]
+  imports: [PaginatorComponent, DbzCharacterCardComponent, DbzMenuButtonsComponent, TittleComponent, PaginatorSkeletonComponent, DbzCharacterCardSkeletonComponent]
 })
 export class DbzHomePageComponent {
   service = inject(DbzService);

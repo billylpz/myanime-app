@@ -1,18 +1,19 @@
 import { Component, computed, effect, inject} from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
-import { PaginatorService } from '../../../shared/components/paginator/service/paginator.service';
+import { PaginatorService } from '../../../shared/service/paginator/paginator.service';
 import { DbzService } from '../../services/dbz.service';
 import { TittleComponent } from "../../../shared/components/tittle/tittle.component";
-import { DbzMenuButtonsComponent } from "../../components/menu-buttons/menuButtons/dbz-menuButtons.component";
 import { PaginatorComponent } from "../../../shared/components/paginator/paginator.component";
-import { LoadingSpinnerComponent } from "../../../shared/components/loading-spinner/loading-spinner.component";
-import { DbzPlanetCardComponent } from "../../components/card/planet-card/dbz-planet-card.component";
+import { DbzPlanetCardComponent } from "../../components/dbz-planet-card/dbz-planet-card.component";
+import { DbzMenuButtonsComponent } from '../../components/dbz-menu-buttons/dbz-menuButtons.component';
+import { DbzPlanetCardSkeletonComponent } from "../../components/dbz-planet-card-skeleton/dbz-planet-card-skeleton.component";
+import { PaginatorSkeletonComponent } from "../../../shared/components/paginator-skeleton/paginator-skeleton.component";
 
 @Component({
   selector: 'app-dbz-planets-page',
   templateUrl: './dbz-planets-page.component.html',
   styleUrls: ['./dbz-planets-page.component.css'],
-  imports: [TittleComponent, DbzMenuButtonsComponent, PaginatorComponent, LoadingSpinnerComponent, DbzPlanetCardComponent]
+  imports: [TittleComponent, DbzMenuButtonsComponent, PaginatorComponent, DbzPlanetCardComponent, DbzPlanetCardSkeletonComponent, PaginatorSkeletonComponent]
 })
 export class DbzPlanetsPageComponent  {
   service = inject(DbzService);

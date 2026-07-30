@@ -1,9 +1,8 @@
 <div class="flex flex-col min-h-screen">
   <app-tittle [title]="title" />
-
   <dbz-menuButtons />
 
-  <div class="flex justify-center text-black">
+  <div class="flex justify-center text-black my-10">
     <select class="select select-secondary w-40 sm:w-50 bg-gray-200 dark:bg-slate-800 dark:text-white"
       (change)="filtrar($event)">
       <option disabled selected>Search by race</option>
@@ -14,16 +13,23 @@
   </div>
 
   @if (dbzResource.isLoading()){
-  <loading-spinner />
+  <!-- LISTADO SKELETON-->
+  <div class="grid grid-cols-1 gap-5  
+     sm:grid-cols-2
+     md:grid-cols-2
+     lg:grid-cols-2">
+
+    @for (item of [1,2,3,4,5,6,7,8,9,10,11,12]; track $index) {
+    <dbz-character-card-skeleton />
+    }
+  </div>
   }
-
-
+  @else {
   <div class="grid grid-cols-1 gap-5 flex-1
     sm:grid-cols-2">
     @for (character of characters(); track character.id) {
     <dbz-character-card [character]="character" />
     }
   </div>
-
-
+  }
 </div>

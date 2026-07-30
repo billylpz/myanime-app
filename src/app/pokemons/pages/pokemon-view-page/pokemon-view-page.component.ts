@@ -1,6 +1,6 @@
-import { Component, computed, effect, inject, OnInit, Signal } from '@angular/core';
+import { Component, computed, effect, inject} from '@angular/core';
 import { PokemonService } from '../../services/pokemon.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { rxResource, toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs';
 import { CommonModule, TitleCasePipe } from '@angular/common';
@@ -23,6 +23,7 @@ import { PokemonTypeColorPipe } from '../../pipes/pokemon-type/pokemon-type-colo
 })
 export class PokemonViewPageComponent {
   private service = inject(PokemonService);
+  private router = inject(Router);
   private activatedRoute = inject(ActivatedRoute);
   private audio = new Audio();
 
@@ -41,10 +42,12 @@ export class PokemonViewPageComponent {
     stream: ({ params }) => this.service.getPokemonByName(params.pokemonName!)
   })
 
-  effects = effect(() => {
-
-  }
-  );
+  errorEffect = effect(() => {
+    if (this.pokemonResource.error()) {
+      // Redirige al home de Pokémon o al inicio principal de la App
+      this.router.navigate(['/pokemon']);
+    }
+  });
 
   playCry(url: string | undefined) {
     if (url) {

@@ -1,60 +1,44 @@
-@if (pokemonResource.isLoading()) {
-  <!-- Skeleton Loader (mismo tamaño y layout que la card real) -->
-  <div class="flex flex-col card p-3 bg-gray-200 dark:bg-slate-800 w-40 sm:w-50 h-95 mb-15 animate-pulse justify-between">
-    <div class="flex-1 flex flex-col items-center pt-2">
-      <!-- Image Skeleton -->
-      <div class="size-30 rounded-full bg-slate-300 dark:bg-slate-700 mb-4"></div>
-      
-      <!-- Title Skeleton -->
-      <div class="h-5 w-3/4 bg-slate-300 dark:bg-slate-700 rounded mb-3"></div>
-      
-      <!-- Badges/Types Skeleton -->
-      <div class="flex flex-col gap-2 items-center w-full">
-        <div class="h-5 w-16 bg-slate-300 dark:bg-slate-700 rounded-full"></div>
-        <div class="h-5 w-16 bg-slate-300 dark:bg-slate-700 rounded-full"></div>
-      </div>
-    </div>
-
-    <!-- Button Skeleton -->
-    <div class="h-10 w-full bg-slate-300 dark:bg-slate-700 rounded-xl mt-auto"></div>
-  </div>
-} @else {
-  <!-- Card real -->
-  <div class="flex flex-col card p-3 bg-gray-200 text-black dark:text-white dark:bg-linear-to-b from-slate-900 to-slate-700 w-40
+@if(pokemonResource.isLoading()){
+<pokemon-card-skeleton />
+}
+@else {
+<!-- Card real -->
+<div class="flex flex-col card p-3 bg-gray-200 text-black dark:text-white dark:bg-linear-to-b from-slate-900 to-slate-700 w-40
     shadow-xl shadow-slate-500 dark:shadow-slate-800 mb-15 cursor-pointer 
     sm:w-50 h-95">
 
-    <section [routerLink]="['view', pokemonResource.value()?.name]" class="flex-1">
-      <figure class="flex justify-center">
-        @if (pokemonResource.value()?.sprites?.front_default) {
-          <img [src]="pokemonResource.value()?.sprites?.front_default" [alt]="pokemonResource.value()?.name" class="size-30" />
-        } @else {
-          <img src="no-image.png" [alt]="'no-image.png'" class="size-30" />
-        }
-      </figure>
+  <section [routerLink]="['view', pokemonResource.value()?.name]" class="flex-1">
+    <figure class="flex justify-center">
+      @if(!pokemonResource.isLoading()){
+      <img [src]="pokemonResource.value()?.sprites?.front_default" [alt]="pokemonResource.value()?.name"
+        class="size-30" />
+      } @else {
+      <img src="no-image.png" [alt]="'no-image.png'" class="size-30" />
+      }
+    </figure>
 
-      <div class="card-body px-2">
-        <h2 class="card-title justify-center">
-          {{ pokemonResource.value() | pokemonName | titlecase }}
-        </h2>
+    <div class="card-body px-2">
+      <h2 class="card-title justify-center">
+        {{ pokemonResource.value() | pokemonName | titlecase }}
+      </h2>
 
-        @for (type of pokemonResource.value()?.types; track $index) {
-          <div class="card-actions justify-center">
-            <div class="badge badge-outline" [ngClass]="type.type.name | pokemonTypeColor">
-              {{ type.type.name }}
-            </div>
-          </div>
-        }
+      @for (type of pokemonResource.value()?.types; track $index) {
+      <div class="card-actions justify-center">
+        <div class="badge badge-outline" [ngClass]="type.type.name | pokemonTypeColor">
+          {{ type.type.name }}
+        </div>
       </div>
-    </section>
+      }
+    </div>
+  </section>
 
-    @if (pokemonResource.value()?.cries?.latest) {
-      <button (click)="playCry(pokemonResource.value()?.cries?.latest)" class="flex items-center justify-center gap-2 px-4 py-2 rounded-xl
-            bg-indigo-600 text-white font-semibold
-            hover:bg-indigo-700 active:scale-95
-            transition-all shadow-md cursor-pointer">
-        🔊 Play Cry
-      </button>
-    }
-  </div>
+  @if (pokemonResource.value()?.cries?.latest) {
+  <button (click)="playCry(pokemonResource.value()?.cries?.latest)" class="flex items-center justify-center gap-2 px-4 py-2 rounded-xl
+  bg-indigo-600 text-white font-semibold
+  hover:bg-indigo-700 active:scale-95
+  transition-all shadow-md cursor-pointer">
+    🔊 Play Cry
+  </button>
+  }
+</div>
 }

@@ -1,18 +1,19 @@
 import { Component, computed, effect, inject, signal } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { Router, RouterModule } from '@angular/router';
-import { PaginatorService } from '../../../shared/components/paginator/service/paginator.service';
+import { PaginatorService } from '../../../shared/service/paginator/paginator.service';
 import { PokemonService } from '../../services/pokemon.service';
-import { LoadingSpinnerComponent } from "../../../shared/components/loading-spinner/loading-spinner.component";
 import { PokemonCardComponent } from "../../components/pokemon-card/pokemon-card.component";
 import { PaginatorComponent } from "../../../shared/components/paginator/paginator.component";
 import { TittleComponent } from "../../../shared/components/tittle/tittle.component";
+import { PokemonCardSkeletonComponent } from "../../components/pokemon-card-skeleton/pokemon-card-skeleton.component";
+import { PaginatorSkeletonComponent } from "../../../shared/components/paginator-skeleton/paginator-skeleton.component";
 
 @Component({
   selector: 'app-pokemon-home-page',
   templateUrl: './pokemon-home-page.component.html',
   styleUrls: ['./pokemon-home-page.component.css'],
-  imports: [RouterModule, LoadingSpinnerComponent, PokemonCardComponent, PaginatorComponent, TittleComponent]
+  imports: [RouterModule, PokemonCardComponent, PaginatorComponent, TittleComponent, PokemonCardSkeletonComponent, PaginatorSkeletonComponent]
 })
 export default class PokemonHomePageComponent {
   readonly title = 'List of Pokémons';

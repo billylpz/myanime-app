@@ -5,12 +5,13 @@ import { CommonModule, TitleCasePipe } from '@angular/common';
 import { PokemonNamePipe } from "../../pipes/pokemon-name/pokemon-name.pipe";
 import { PokemonTypeColorPipe } from "../../pipes/pokemon-type/pokemon-type-color.pipe";
 import { RouterLink } from "@angular/router";
+import { PokemonCardSkeletonComponent } from "../pokemon-card-skeleton/pokemon-card-skeleton.component";
 
 @Component({
   selector: 'pokemon-card',
   templateUrl: './pokemon-card.component.html',
   styleUrls: ['./pokemon-card.component.css'],
-  imports: [TitleCasePipe, PokemonNamePipe, PokemonTypeColorPipe, CommonModule, RouterLink]
+  imports: [TitleCasePipe, PokemonNamePipe, PokemonTypeColorPipe, CommonModule, RouterLink, PokemonCardSkeletonComponent]
 })
 export class PokemonCardComponent {
   private service = inject(PokemonService);
