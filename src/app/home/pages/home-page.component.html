@@ -1,5 +1,10 @@
+<!-- 
+  Página de inicio (Home Page).
+  Contiene una sección héroe de bienvenida y una grilla responsiva de accesos directos
+  a los módulos principales de la aplicación.
+-->
 <div class="min-h-[80vh] flex flex-col items-center justify-center px-4 py-8">
-  <!-- Hero / Bienvenida -->
+  <!-- Bienvenida -->
   <div class="text-center max-w-2xl mb-12">
     <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4 drop-shadow-md">
       ¡Bienvenido a <span
@@ -12,13 +17,13 @@
     </p>
   </div>
 
-  <!-- Grid de Tarjetas / Módulos -->
+  <!-- Módulos -->
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl w-full">
 
     <!-- Módulo Pokémon -->
     <a [routerLink]="['/pokemon']"
       class="group relative overflow-hidden rounded-2xl bg-white dark:bg-linear-to-b dark:from-slate-800 dark:to-slate-900 border border-slate-200 dark:border-slate-700 p-6 
-              shadow-xl dark:shadow-2xl hover:shadow-2xl hover:shadow-red-500/10 dark:hover:shadow-red-500/20 transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between cursor-pointer">
+             shadow-xl dark:shadow-2xl hover:shadow-2xl hover:shadow-red-500/10 dark:hover:shadow-red-500/20 transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between cursor-pointer">
 
       <!-- Glow Effect en Hover -->
       <div
@@ -26,17 +31,6 @@
       </div>
 
       <div>
-        <!-- <div class="flex items-center justify-between mb-4">
-         Icono con tamaño controlado -->
-        <!-- <div class="size-50 flex items-center justify-center">
-            <img src="/pokeball-icon.png" alt="Pokeball" class="w-full h-full object-contain filter drop-shadow-md group-hover:scale-110 transition-transform duration-300">
-          </div>
-          <span
-            class="text-xs font-semibold px-3 py-1 rounded-full bg-red-100 text-red-600 border border-red-200 dark:bg-red-500/20 dark:text-red-400 dark:border-red-500/30">
-            PokeAPI
-          </span> -->
-        <!-- </div> -->
-
         <div class="flex flex-col items-center justify-between mb-4">
           <div class="flex justify-end w-full">
             <span class="text-xs font-semibold px-3 py-1 rounded-full bg-red-100 text-red-600 border border-red-200
@@ -76,7 +70,7 @@
     <!-- Módulo Dragon Ball -->
     <a [routerLink]="['/dbz']"
       class="group relative overflow-hidden rounded-2xl bg-white dark:bg-linear-to-b dark:from-slate-800 dark:to-slate-900 border border-slate-200 dark:border-slate-700 p-6 
-              shadow-xl dark:shadow-2xl hover:shadow-2xl hover:shadow-amber-500/10 dark:hover:shadow-amber-500/20 transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between cursor-pointer">
+             shadow-xl dark:shadow-2xl hover:shadow-2xl hover:shadow-amber-500/10 dark:hover:shadow-amber-500/20 transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between cursor-pointer">
 
       <!-- Glow Effect en Hover -->
       <div

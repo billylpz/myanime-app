@@ -1,10 +1,36 @@
-<div class="join flex justify-center my-10  [&_button]:text-gray-700 dark:[&_button]:text-gray-200 dark:[&_button]:border-slate-700">
-  <button class="join-item btn bg-gray-400 dark:bg-slate-800 " [routerLink]="[]" [queryParams]="{page:1}">First</button>
-  <button class="join-item btn bg-gray-500 dark:bg-slate-800/50 " [routerLink]="[]"
-    [queryParams]="{page:currentPage()-1}" [disabled]="currentPage()==1">«</button>
-  <button class="join-item btn bg-gray-400 dark:bg-slate-800">Page {{currentPage()}} of {{totalPages()}} </button>
+<!-- 
+  Barra de controles de paginación.
+  Utiliza el componente `join` de DaisyUI para agrupar los botones de navegación.
+  Actualiza dinámicamente los queryParams de la URL sin recargar la página.
+-->
+<div class="join flex justify-center my-10 [&_button]:text-gray-700 dark:[&_button]:text-gray-200 dark:[&_button]:border-slate-700">
+  
+  <!-- Ir a la primera página -->
+  <button class="join-item btn bg-gray-400 dark:bg-slate-800" [routerLink]="[]" [queryParams]="{page:1}">
+    First
+  </button>
+
+  <!-- Página anterior (Se inhabilita en la página 1) -->
   <button class="join-item btn bg-gray-500 dark:bg-slate-800/50" [routerLink]="[]"
-    [queryParams]="{page:currentPage()+1}" [disabled]="currentPage()==totalPages()">»</button>
+    [queryParams]="{page:currentPage()-1}" [disabled]="currentPage()==1">
+    «
+  </button>
+
+  <!-- Indicador del estado actual de paginación -->
+  <button class="join-item btn bg-gray-400 dark:bg-slate-800">
+    Page {{currentPage()}} of {{totalPages()}}
+  </button>
+
+  <!-- Página siguiente (Se inhabilita en la última página) -->
+  <button class="join-item btn bg-gray-500 dark:bg-slate-800/50" [routerLink]="[]"
+    [queryParams]="{page:currentPage()+1}" [disabled]="currentPage()==totalPages()">
+    »
+  </button>
+
+  <!-- Ir a la última página -->
   <button class="join-item btn bg-gray-400 dark:bg-slate-800" [routerLink]="[]"
-    [queryParams]="{page:(totalPages())}">Last </button>
+    [queryParams]="{page:(totalPages())}">
+    Last
+  </button>
+
 </div>

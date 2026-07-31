@@ -1,6 +1,13 @@
-<nav class=" flex px-5 md:px-15  py-5 bg-red-600 dark:bg-neutral">
+<!-- 
+  Barra de navegación principal (Navbar).
+  Estructurada en tres secciones:
+  - Izquierda (LEFT): Logo e identidad de la aplicación.
+  - Centro (CENTER): Enlaces de navegación para pantallas medianas/grandes (Desktop).
+  - Derecha (RIGHT): Conmutador de modo oscuro (Dark Mode) y menú hamburguesa responsive (Mobile).
+-->
+<nav class="flex px-5 md:px-15 py-5 bg-red-600 dark:bg-neutral">
   <!-- LEFT -->
-  <div class="navbar-start ">
+  <div class="navbar-start">
     <a class="text-md md:text-xl lg:text-2xl text-white dark:hover:text-red-400 drop-shadow-md drop-shadow-amber-300"
       routerLink="/home">
       <div class="flex items-center gap-3">
@@ -16,14 +23,14 @@
         <a routerLink="/pokemon" routerLinkActive="border-b-2 border-blue-500"
           class="flex gap-2 items-center font-semibold text-lg text-white dark:text-yellow-400 transition-all duration-200">
           Pokémon API
-          <img src="pokeball-icon.png" alt="" class="size-5  " />
+          <img src="pokeball-icon.png" alt="" class="size-5" />
         </a>
       </li>
       <li class="">
-        <a routerLink="/dbz" routerLinkActive=" border-b-2 border-blue-500"
-          class=" font-semibold text-lg text-white dark:text-orange-400 flex gap-2  items-center transition-all duration-200">
+        <a routerLink="/dbz" routerLinkActive="border-b-2 border-blue-500"
+          class="font-semibold text-lg text-white dark:text-orange-400 flex gap-2 items-center transition-all duration-200">
           DragonBall API
-          <img src="dbz-ball-icon.png" alt="" class="size-5 " />
+          <img src="dbz-ball-icon.png" alt="" class="size-5" />
         </a>
       </li>
     </ul>
@@ -34,21 +41,21 @@
 
     <!-- darkmode icon -->
     <div class="flex gap-2 items-center">
-      <span class="group inline-flex shrink-0 justify-center items-center size-9 ">
-        <svg class="shrink-0 size-4 text-white" xmlns="http://www.w3.org/2000/svg " width="24"
+      <span class="group inline-flex shrink-0 justify-center items-center size-9">
+        <svg class="shrink-0 size-4 text-white" xmlns="http://www.w3.org/2000/svg" width="24"
           height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
           stroke-linejoin="round">
-          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z " />
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
         </svg>
       </span>
 
       <!-- switcher darkmode -->
-      <label for="darkSwtich" class="relative inline-block w-11 h-6 cursor-pointer ">
-        <input data-hs-theme-switch type="checkbox" id="darkSwtich" class="peer sr-only " (click)="darkModeOnOff()">
+      <label for="darkSwtich" class="relative inline-block w-11 h-6 cursor-pointer">
+        <input data-hs-theme-switch type="checkbox" id="darkSwtich" class="peer sr-only" (click)="darkModeOnOff()">
         <span
-          class="bg-blue-900 absolute inset-0 bg-surface-1 rounded-full transition-colors duration-200 ease-in-out peer-checked:bg-primary-checked peer-disabled:opacity-50 peer-disabled:pointer-events-none "></span>
+          class="bg-blue-900 absolute inset-0 bg-surface-1 rounded-full transition-colors duration-200 ease-in-out peer-checked:bg-primary-checked peer-disabled:opacity-50 peer-disabled:pointer-events-none"></span>
         <span
-          class="bg-white absolute top-1/2 start-0.5 -translate-y-1/2 size-5 bg-switch rounded-full shadow-sm transition-transform! duration-200 ease-in-out peer-checked:translate-x-full "></span>
+          class="bg-white absolute top-1/2 start-0.5 -translate-y-1/2 size-5 bg-switch rounded-full shadow-sm transition-transform! duration-200 ease-in-out peer-checked:translate-x-full"></span>
       </label>
     </div>
 
@@ -58,7 +65,7 @@
         ☰
       </label>
 
-      <ul tabindex="0" class="menu dropdown-content mt-3 p-2 shadow  rounded-box w-52 
+      <ul tabindex="0" class="menu dropdown-content mt-3 p-2 shadow rounded-box w-52 
          bg-slate-600 dark:bg-base-100">
         <li>
           <a routerLink="/pokemon" routerLinkActive="font-bold border-b-2 border-blue-500"
@@ -68,7 +75,7 @@
         </li>
         <li><a routerLink="/dbz" routerLinkActive="font-bold border-b-2 border-blue-500"
             class="text-orange-400 transition-all duration-200">Api DragonBall
-            <img src="dbz-ball-icon.png" alt="" class="size-6 " />
+            <img src="dbz-ball-icon.png" alt="" class="size-6" />
           </a>
         </li>
       </ul>
