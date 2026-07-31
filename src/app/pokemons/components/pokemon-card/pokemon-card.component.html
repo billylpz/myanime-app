@@ -1,44 +1,49 @@
+<!-- 
+  Tarjeta de representación de Pokémon.
+  Muestra un esqueleto de carga mientras `pokemonResource` se está resolviendo 
+  y renderiza la tarjeta completa con imagen, nombre, tipos y botón de audio una vez completado.
+-->
 @if(pokemonResource.isLoading()){
-<pokemon-card-skeleton />
+  <pokemon-card-skeleton />
 }
 @else {
-<!-- Card real -->
-<div class="flex flex-col card p-3 bg-gray-200 text-black dark:text-white dark:bg-linear-to-b from-slate-900 to-slate-700 w-40
-    shadow-xl shadow-slate-500 dark:shadow-slate-800 mb-15 cursor-pointer 
-    sm:w-50 h-95">
+  <!-- Card real -->
+  <div class="flex flex-col card p-3 bg-gray-200 text-black dark:text-white dark:bg-linear-to-b from-slate-900 to-slate-700 w-40
+      shadow-xl shadow-slate-500 dark:shadow-slate-800 mb-15 cursor-pointer 
+      sm:w-50 h-95">
 
-  <section [routerLink]="['view', pokemonResource.value()?.name]" class="flex-1">
-    <figure class="flex justify-center">
-      @if(!pokemonResource.isLoading()){
-      <img [src]="pokemonResource.value()?.sprites?.front_default" [alt]="pokemonResource.value()?.name"
-        class="size-30" />
-      } @else {
-      <img src="no-image.png" [alt]="'no-image.png'" class="size-30" />
-      }
-    </figure>
+    <section [routerLink]="['view', pokemonResource.value()?.name]" class="flex-1">
+      <figure class="flex justify-center">
+        @if(pokemonResource.value()?.sprites?.front_default){
+          <img [src]="pokemonResource.value()?.sprites?.front_default" [alt]="pokemonResource.value()?.name"
+            class="size-30" />
+        } @else {
+          <img src="no-image.png" alt="no-image.png" class="size-30" />
+        }
+      </figure>
 
-    <div class="card-body px-2">
-      <h2 class="card-title justify-center">
-        {{ pokemonResource.value() | pokemonName | titlecase }}
-      </h2>
+      <div class="card-body px-2">
+        <h2 class="card-title justify-center">
+          {{ pokemonResource.value() | pokemonName | titlecase }}
+        </h2>
 
-      @for (type of pokemonResource.value()?.types; track $index) {
-      <div class="card-actions justify-center">
-        <div class="badge badge-outline" [ngClass]="type.type.name | pokemonTypeColor">
-          {{ type.type.name }}
-        </div>
+        @for (type of pokemonResource.value()?.types; track $index) {
+          <div class="card-actions justify-center">
+            <div class="badge badge-outline" [ngClass]="type.type.name | pokemonTypeColor">
+              {{ type.type.name }}
+            </div>
+          </div>
+        }
       </div>
-      }
-    </div>
-  </section>
+    </section>
 
-  @if (pokemonResource.value()?.cries?.latest) {
-  <button (click)="playCry(pokemonResource.value()?.cries?.latest)" class="flex items-center justify-center gap-2 px-4 py-2 rounded-xl
-  bg-indigo-600 text-white font-semibold
-  hover:bg-indigo-700 active:scale-95
-  transition-all shadow-md cursor-pointer">
-    🔊 Play Cry
-  </button>
-  }
-</div>
+    @if (pokemonResource.value()?.cries?.latest) {
+      <button (click)="playCry(pokemonResource.value()?.cries?.latest)" class="flex items-center justify-center gap-2 px-4 py-2 rounded-xl
+      bg-indigo-600 text-white font-semibold
+      hover:bg-indigo-700 active:scale-95
+      transition-all shadow-md cursor-pointer">
+        🔊 Play Cry
+      </button>
+    }
+  </div>
 }

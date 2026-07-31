@@ -40,7 +40,7 @@
   <!-- 🔹 LISTA REAL -->
   <div class="grid grid-cols-2 gap-4 my-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
     @for (pokemon of pokemonResource.value()?.results; track pokemon.name) {
-    <pokemon-card [inputName]="pokemon.name" />
+    <pokemon-card [pokemonName]="pokemon.name" />
     }
   </div>
 
