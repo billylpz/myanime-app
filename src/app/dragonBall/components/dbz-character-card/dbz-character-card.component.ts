@@ -1,5 +1,5 @@
 import { TitleCasePipe } from '@angular/common';
-import { Character } from '../../interfaces/character-interface';
+import { Character } from '../../interfaces/character';
 import { Component, computed, input, signal } from '@angular/core';
 import { DbzCharacterModalComponent } from '../dbz-character-modal/dbz-character-modal.component';
 

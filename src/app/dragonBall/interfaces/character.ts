@@ -1,3 +1,5 @@
+import { Planet } from "./planet";
+
  /**
  * Representa la entidad principal de un personaje dentro del API de Dragon Ball Z.
  */
@@ -19,26 +21,11 @@ export interface Character {
   /** Fecha de eliminación lógica en formato de cadena ISO, o `null` si permanece activo. */
   deletedAt: string | null;
 
-  originPlanet?: OriginPlanet;
+  originPlanet?: Planet;
 
   transformations?: Transformation[];
 }
 
- /**
- * Representa un planeta de origen dentro del universo de Dragon Ball Z.
- */
-export interface OriginPlanet {
-  id: number;
-  name: string;
-  isDestroyed: boolean;
-  description: string;
-
-  /** URL o ruta de acceso a la imagen representativa del planeta. */
-  image: string;
-
-  /** Fecha de eliminación lógica en formato de cadena ISO, o `null` si permanece activo. */
-  deletedAt: string | null;
-}
 
 /**
  * Representa una transformación o estado alcanzado por un personaje (ej. 'Super Saiyan', 'Golden Frieza').

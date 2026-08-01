@@ -1,11 +1,11 @@
-import { CharactersResponse } from './../interfaces/characters-response';
+import { CharactersResponse } from '../interfaces/characters-response';
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
 import { delay, Observable, of, tap } from 'rxjs';
-import { Character } from '../interfaces/character-interface';
+import { Character } from '../interfaces/character';
 import { PlanetResponse } from '../interfaces/planet-response';
-import { Planet } from '../interfaces/planet-interface';
+import { Planet } from '../interfaces/planet';
 
 /**
  * Opciones de filtrado y paginación para las consultas del API de Dragon Ball.

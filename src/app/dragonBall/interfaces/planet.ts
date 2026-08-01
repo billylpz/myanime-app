@@ -1,4 +1,4 @@
-import { Character } from "./character-interface";
+import { Character } from "./character";
 
 /**
  * Representa la entidad de un planeta dentro del universo de Dragon Ball Z.

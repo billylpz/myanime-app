@@ -1,6 +1,6 @@
 import { Component, computed, input, signal } from '@angular/core';
 import { TitleCasePipe } from '@angular/common';
-import { Planet } from '../../interfaces/planet-interface';
+import { Planet } from '../../interfaces/planet';
 import { DbzPlanetModalComponent } from '../dbz-planet-modal/dbz-planet-modal.component';
 
 /**
