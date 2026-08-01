@@ -1,35 +1,41 @@
+<!-- Contenedor principal con flexbox para ocupar el alto mínimo de la pantalla -->
 <div class="flex flex-col min-h-screen">
+  
+  <!-- Componentes de encabezado y menú de navegación -->
   <app-tittle [title]="title" />
-  <dbz-menuButtons />
+  <dbz-menu-buttons />
 
+  <!-- Selector interactivo de raza -->
   <div class="flex justify-center text-black my-10">
-    <select class="select select-secondary w-40 sm:w-50 bg-gray-200 dark:bg-slate-800 dark:text-white"
+    <select 
+      class="select select-secondary w-40 sm:w-50 bg-gray-200 dark:bg-slate-800 dark:text-white"
       (change)="filtrar($event)">
       <option disabled selected>Search by race</option>
-      @for (race of races() ; track race) {
-      <option [value]="race">{{race}}</option>
+      @for (raceItem of races(); track raceItem) {
+        <option [value]="raceItem">{{ raceItem }}</option>
       }
     </select>
   </div>
 
-  @if (dbzResource.isLoading()){
-  <!-- LISTADO SKELETON-->
-  <div class="grid grid-cols-1 gap-5  
-     sm:grid-cols-2
-     md:grid-cols-2
-     lg:grid-cols-2">
-
-    @for (item of [1,2,3,4,5,6,7,8,9,10,11,12]; track $index) {
-    <dbz-character-card-skeleton />
-    }
-  </div>
-  }
+  <!-- 1. ESTADO DE CARGA: Rejilla de Skeletons mientras se realiza la consulta por raza -->
+  @if (dbzResource.isLoading()) {
+    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2">
+      @for (item of [1,2,3,4,5,6,7,8,9,10,11,12]; track $index) {
+        <dbz-character-card-skeleton />
+      }
+    </div>
+  } 
   @else {
-  <div class="grid grid-cols-1 gap-5 flex-1
-    sm:grid-cols-2">
-    @for (character of characters(); track character.id) {
-    <dbz-character-card [character]="character" />
-    }
-  </div>
+    <!-- 2. CONTENIDO PRINCIPAL: Rejilla de tarjetas de personajes filtrados -->
+    <div class="grid grid-cols-1 gap-5 flex-1 sm:grid-cols-2">
+      @for (character of characters(); track character.id) {
+        <dbz-character-card [character]="character" />
+      } @empty {
+        <p class="text-center text-xl text-gray-500 my-10 col-span-2">
+          No characters found for race "{{ race() }}".
+        </p>
+      }
+    </div>
   }
+
 </div>

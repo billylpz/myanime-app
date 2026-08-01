@@ -1,22 +1,37 @@
-<div class="card sm:card-side  shadow-lg  mb-10 text-black dark:text-white
-  bg-gray-200 dark:bg-slate-800">
+<!-- 
+  Tarjeta de presentación de un planeta.
+  Utiliza clases de DaisyUI ('card', 'sm:card-side') y Tailwind CSS para adaptarse a temas claro/oscuro.
+-->
+<div class="card sm:card-side shadow-lg mb-10 text-black dark:text-white bg-gray-200 dark:bg-slate-800">
+  
+  <!-- Imagen representativa del planeta -->
   <figure>
-    <img [src]="planet().image" [alt]="planet().image" class="size-100" />
+    <img [src]="planet().image" [alt]="planet().name" class="size-100 object-cover" />
   </figure>
-  <div class="card-body w-full sm:w-100">
-    @for (prop of planetProperties(planet()); track prop.key) {
-    <p class="card-title dark:text-amber-100 font-bold">
-      {{ prop.key | titlecase }} :
-    </p>
-    <p class="">{{ prop.value }} </p>
-    }
-    <div class="card-actions justify-end mt-10">
-      <button class="btn btn-primary" (click)="openModal.set(true)">Characters</button>
 
-      @if(openModal()){
-      <dbz-planet-modal (close)="openModal.set($event)" [planetId]="planet().id"></dbz-planet-modal>
+  <!-- Cuerpo de la tarjeta -->
+  <div class="card-body w-full sm:w-100">
+    <!-- Iteración sobre la Signal calculada de propiedades -->
+    @for (prop of planetProperties(); track prop.key) {
+      <p class="card-title dark:text-amber-100 font-bold">
+        {{ prop.key | titlecase }} :
+      </p>
+      <p class="mb-2">{{ prop.value }}</p>
+    }
+
+    <!-- Botón de acción para abrir los detalles y modal condicional -->
+    <div class="card-actions justify-end mt-10">
+      <button class="btn btn-primary" (click)="openModal.set(true)">
+        Characters
+      </button>
+
+      <!-- Modal de personajes asociados al planeta -->
+      @if (openModal()) {
+        <dbz-planet-modal 
+          [planetId]="planet().id" 
+          (close)="openModal.set($event)" />
       }
     </div>
   </div>
-</div>
 
+</div>

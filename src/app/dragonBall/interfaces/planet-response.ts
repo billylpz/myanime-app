@@ -1,11 +1,16 @@
-import { Character } from "./character-interface";
 
+/**
+ * Estructura de respuesta paginada devuelta por el API al consultar el catálogo de planetas.
+ */
 export interface PlanetResponse {
     items: Item[];
     meta:  Meta;
     links: Links;
 }
 
+/**
+ * Información detallada de un planeta retornado en el listado paginado.
+ */
 export interface Item {
     id:          number;
     name:        string;
@@ -15,6 +20,9 @@ export interface Item {
     deletedAt:   null;
 }
 
+/**
+ * Enlaces de navegación HATEOAS para desplazarse entre las páginas de resultados de planetas.
+ */
 export interface Links {
     first:    string;
     previous: string;
@@ -22,6 +30,9 @@ export interface Links {
     last:     string;
 }
 
+/**
+ * Metadatos informativos sobre el estado de la paginación de planetas.
+ */
 export interface Meta {
     totalItems:   number;
     itemCount:    number;

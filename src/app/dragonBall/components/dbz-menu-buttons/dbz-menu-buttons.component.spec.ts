@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { DbzMenuButtonsComponent } from './dbz-menuButtons.component';
+import { DbzMenuButtonsComponent } from './dbz-menu-buttons.component';
 
 describe('MenuButtonsComponent', () => {
   let component: DbzMenuButtonsComponent;

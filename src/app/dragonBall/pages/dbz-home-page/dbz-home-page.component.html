@@ -1,37 +1,41 @@
+<!-- Contenedor principal ajustado al alto de la pantalla -->
 <div class="flex flex-col min-h-screen">
-  <app-tittle [title]="title" />
-  <dbz-menuButtons />
-
-  @if (dbzResource.isLoading()){
-  <paginator-skeleton/>
   
-  <!-- LISTADO SKELETON-->
-  <div class="grid grid-cols-1 gap-5  
-     sm:grid-cols-2
-     md:grid-cols-2
-     lg:grid-cols-2">
+  <!-- Encabezado y barra de navegación entre secciones del módulo DBZ -->
+  <app-tittle [title]="title" />
+  <dbz-menu-buttons />
 
-    @for (item of [1,2,3,4,5,6,7,8,9,10,11,12]; track $index) {
-      <dbz-character-card-skeleton/>
-    }
-  </div>
+  <!-- 1. ESTADO DE CARGA: Paginador y tarjetas en modo Skeleton -->
+  @if (dbzResource.isLoading()) {
+    <paginator-skeleton />
+    
+    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2">
+      @for (item of [1,2,3,4,5,6,7,8,9,10,11,12]; track $index) {
+        <dbz-character-card-skeleton />
+      }
+    </div>
 
-  <paginator-skeleton/>
+    <paginator-skeleton />
   }
-  @else{
-  <paginator [currentPage]="paginationService.currentPage()" [totalPages]="totalPages()" />
+  @else {
+    <!-- 2. CONTENIDO PRINCIPAL: Paginador superior, tarjetas de personajes y paginador inferior -->
+    <paginator 
+      [currentPage]="paginationService.currentPage()" 
+      [totalPages]="totalPages()" />
 
-  <!-- LISTADO -->
-  <div class="grid grid-cols-1 gap-5  
-     sm:grid-cols-2
-     md:grid-cols-2
-     lg:grid-cols-2">
-    @for (character of characters(); track character.id) {
-    <dbz-character-card [character]="character" />
-    }
-  </div>
+    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2">
+      @for (character of characters(); track character.id) {
+        <dbz-character-card [character]="character" />
+      } @empty {
+        <p class="text-center text-xl text-gray-500 my-10 col-span-2">
+          No characters found.
+        </p>
+      }
+    </div>
 
-  <paginator [currentPage]="paginationService.currentPage()" [totalPages]="totalPages()" />
-
+    <paginator 
+      [currentPage]="paginationService.currentPage()" 
+      [totalPages]="totalPages()" />
   }
+
 </div>

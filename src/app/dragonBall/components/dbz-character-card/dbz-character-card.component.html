@@ -1,34 +1,53 @@
-<div class="card card-side  my-5 shadow-xl shadow-slate-500 dark:shadow-slate-800  
+<!-- 
+  Tarjeta principal de personaje.
+  Utiliza clases de DaisyUI ('card', 'card-side') y Tailwind CSS para adaptarse 
+  a diseños responsivos y temas claro/oscuro.
+-->
+<div class="card card-side my-5 shadow-xl shadow-slate-500 dark:shadow-slate-800  
   bg-gray-200 text-black dark:text-white dark:bg-linear-to-b from-slate-900 to-slate-700
-   md:h-180">
+  md:h-180">
+  
+  <!-- Imagen del personaje para pantallas grandes (xl) -->
   <figure class="w-80 h-full hidden xl:block">
-    <img [src]="image()" class="w-full h-full" />
+    <img [src]="image()" class="w-full h-full" [alt]="character().name" />
   </figure>
 
-  <div class="card-body w-full flex flex-col ">
+  <!-- Cuerpo de la tarjeta -->
+  <div class="card-body w-full flex flex-col">
     <div class="flex-1 overflow-auto">
+      <!-- Nombre del personaje -->
       <h2 class="card-title text-4xl text-gray-900 dark:text-white">{{character().name}}</h2>
 
-      <!-- imagen en movil/md -->
-      <div class="  flex justify-center xl:hidden">
+      <!-- Imagen adaptada para dispositivos móviles y tablets (< xl) -->
+      <div class="flex justify-center xl:hidden">
         <img [src]="image()" [alt]="character().name" class="w-40 h-90" />
       </div>
-      <!--  -->
 
-      <div class=" mt-5">
-        @for (propertie of characterProperties() ; track propertie) {
-        <p><span class="text-gray-800 dark:text-amber-200 font-bold"> {{propertie.key | titlecase}}</span> : {{propertie.value}}</p>
-        <br>
+      <!-- Listado dinámico de propiedades del personaje -->
+      <div class="mt-5">
+        @for (propertie of characterProperties(); track propertie.key) {
+          <p>
+            <span class="text-gray-800 dark:text-amber-200 font-bold">
+              {{propertie.key | titlecase}}
+            </span> 
+            : {{propertie.value}}
+          </p>
+          <br>
         }
       </div>
     </div>
     
+    <!-- Botón de acciones y renderizado condicional del modal -->
     <div class="card-actions justify-end mt-5">
-      <button class="btn btn-primary " (click)="openModal.set(true)">
+      <button class="btn btn-primary" (click)="openModal.set(true)">
         Details
       </button>
+      
+      <!-- Modal desplegable cuando 'openModal' es true -->
       @if (openModal()) {
-      <dbz-character-modal [characterId]="character().id" (close)="openModal.set($event)" />
+        <dbz-character-modal 
+          [characterId]="character().id" 
+          (close)="openModal.set($event)" />
       }
     </div>
   </div>

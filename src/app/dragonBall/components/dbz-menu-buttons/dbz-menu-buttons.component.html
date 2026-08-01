@@ -1,0 +1,21 @@
+<!-- 
+  Barra de navegación interna del módulo DBZ.
+  Utiliza clases de DaisyUI ('btn') y directivas de Angular Router ('routerLink').
+  Se recomienda usar la etiqueta <a> para navegación por enrutamiento.
+-->
+<nav class="mb-15 flex justify-center gap-4">
+  <!-- Enlace hacia la vista principal de personajes -->
+  <a class="btn btn-neutral" routerLink="/dbz">
+    Characters
+  </a>
+
+  <!-- Enlace hacia el catálogo de planetas -->
+  <a class="btn btn-primary" routerLink="/dbz/planets">
+    Planets
+  </a>
+
+  <!-- Enlace hacia la vista de filtrado por raza -->
+  <a class="btn btn-secondary" routerLink="/dbz/characters-by-race">
+    By race
+  </a>
+</nav>

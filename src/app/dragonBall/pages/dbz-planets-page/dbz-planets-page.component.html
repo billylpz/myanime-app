@@ -1,6 +1,6 @@
 <div class="flex flex-col min-h-screen">
   <app-tittle [title]="title" />
-  <dbz-menuButtons />
+  <dbz-menu-buttons />
 
   @if (planetsResource.isLoading()){
   <paginator-skeleton />
@@ -14,7 +14,7 @@
 
   <div class="flex-1">
     @for (planet of planetsResource.value()?.items; track planet) {
-    <dbz-planet-card [planet]="planet"></dbz-planet-card>
+    <dbz-planet-card [planet]="planet"/>
     }
   </div>
 
