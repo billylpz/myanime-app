@@ -2,8 +2,8 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
 import { delay, map, Observable, of, tap } from 'rxjs';
-import { Pokemon } from '../interfaces/pokemon.interface';
-import { PokemonResponse } from '../interfaces/pokemon-response.interface';
+import { Pokemon } from '../interfaces/pokemon';
+import { PokemonResponse } from '../interfaces/pokemon-response';
 
 /**
  * Opciones de configuración para las peticiones de listado y búsqueda de Pokémon.

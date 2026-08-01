@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Pokemon } from '../../interfaces/pokemon.interface';
+import { Pokemon } from '../../interfaces/pokemon';
 
 /**
  * Pipe que formatea la representación visual del nombre de un Pokémon.
